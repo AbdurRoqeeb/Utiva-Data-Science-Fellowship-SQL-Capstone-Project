@@ -2,6 +2,7 @@
 ----
 ## Introduction
 This project is an exploratory analysis of International Breweries Data in West Africa between 2017 and 2019. It is the castone project of the SQL section of [Utiva](https://utiva.io/) Data Science Feloowship programme.
+
 ----
 ## Project Requirement
 The requirement is to carry out
@@ -9,15 +10,19 @@ The requirement is to carry out
 - Brand analysis and
 - Country analysis.
 The goal of this exploratory analysis is to help the company in making better decisions in order to maximize profit and reduce loss to the lowest minimum.
+
 ----
 ## Data Sourcing and Importating into Postgresql
 The dataset was provided by Utiva for the purpose of the project and it is in .csv format.
 Before importing into pgadmin, a table was created in the database with the syntax below:
 ![image](https://user-images.githubusercontent.com/101981141/179999642-886aa394-edd1-4528-ab39-1ea8dea971b3.png)
+
 The dataset was then imported into the table created
 ![image](https://user-images.githubusercontent.com/101981141/180000167-c9190f39-8718-4d4d-973e-a09d104bb139.png)
-A quick look at the tale after importing
+
+A quick look at the table after importing
 ![image](https://user-images.githubusercontent.com/101981141/180000502-5244e943-0ef1-43b3-822a-b56c3fa15278.png)
+
 ----
 ## Exploratory Data Analysis
 ### 1. Profit Analysis
