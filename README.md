@@ -18,7 +18,7 @@ Before importing into pgadmin, a table was created in the database with the synt
 ![image](https://user-images.githubusercontent.com/101981141/179999642-886aa394-edd1-4528-ab39-1ea8dea971b3.png)
 
 The dataset was then imported into the table created
-![image](https://user-images.githubusercontent.com/101981141/180000167-c9190f39-8718-4d4d-973e-a09d104bb139.png)
+![image](https://user-images.githubusercontent.com/101981141/180005280-42f6c3b1-2ed5-4e9a-b668-cacd0ff55fa0.png)
 
 A quick look at the table after importing
 ![image](https://user-images.githubusercontent.com/101981141/180000502-5244e943-0ef1-43b3-822a-b56c3fa15278.png)
