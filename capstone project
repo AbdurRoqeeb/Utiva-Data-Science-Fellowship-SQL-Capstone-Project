@@ -1,0 +1,190 @@
+CREATE TABLE international_breweries
+(
+    sales_id integer,
+    sales_rep character varying,
+    emails character varying,
+    brands character varying,
+    plant_cost integer,
+    unit_price integer,
+    quantity integer,
+    cost integer,
+    profit integer,
+    countries character varying,
+    region character varying,
+    months character varying,
+    years integer
+);
+
+SELECT * FROM international_breweries;
+
+-- Section A: Profit Analysis
+
+SELECT SUM(profit) total_profit from international_breweries;
+
+SELECT
+	CASE WHEN countries IN ('Nigeria','Ghana')
+		THEN 'Anglophone'
+	ELSE 'Francophone'
+	END territories,
+	SUM(profit) total_profit
+FROM international_breweries
+GROUP BY territories;
+
+SELECT
+	countries,
+	SUM (profit) total_profit
+FROM international_breweries
+WHERE years = 2019
+GROUP BY countries
+ORDER BY total_profit DESC
+LIMIT 1;
+
+SELECT
+	years,
+	SUM (profit) total_profit
+FROM international_breweries
+GROUP BY years
+ORDER BY total_profit DESC
+LIMIT 1;
+
+
+
+SELECT
+	months,
+	years,
+	SUM(profit) 
+FROM international_breweries
+GROUP BY months, years
+ORDER BY SUM(profit) ASC
+LIMIT 1;
+
+
+SELECT
+	months,
+	years,
+	MIN (profit) minimum_profit
+FROM international_breweries
+WHERE years = 2018 AND months = 'December'
+GROUP BY months, years;
+
+SELECT months, SUM(profit) total_profit,
+	CAST(ROUND((SUM(profit) * 100.0) / (SELECT SUM(profit)
+FROM international_breweries1
+WHERE years = 2019),2)AS VARCHAR) || '%' as percentage_profit
+	FROM international_breweries1
+WHERE years = 2019
+GROUP BY months;
+
+SELECT
+	brands,
+	SUM (profit) total_profit
+FROM international_breweries
+WHERE countries = 'Senegal'
+GROUP BY brands
+ORDER BY total_profit DESC
+LIMIT 1;
+
+-- Section B: Brand Analysis
+
+WITH territory AS (
+	SELECT brands,
+	CASE WHEN countries IN ('Togo','Senegal', 'Benin')
+		THEN 'Francophone'
+	END country_territory, SUM (quantity) total
+FROM international_breweries1
+WHERE years IN (2018, 2019)
+GROUP BY brands, country_territory
+)
+SELECT brands, total
+FROM territory
+WHERE country_territory = 'Francophone'
+ORDER BY  total DESC
+LIMIT 3;
+
+SELECT brands, SUM (quantity) as total_quantity
+FROM international_breweries
+WHERE countries = 'Ghana'
+GROUP BY brands
+ORDER BY total_quantity DESC
+LIMIT 2;
+
+SELECT *
+FROM international_breweries
+WHERE countries = 'Nigeria'
+AND brands NOT LIKE '%malt';
+
+
+WITH territory AS (
+	SELECT brands,
+	CASE WHEN countries IN ('Nigeria','Ghana')
+		THEN 'Anglophone'
+	END country_territory, SUM (quantity) total
+FROM international_breweries1
+WHERE years IN (2018, 2019)
+	AND brands LIKE '%malt'
+GROUP BY brands, country_territory)
+SELECT brands, total
+FROM territory
+WHERE country_territory = 'Anglophone'
+ORDER BY  total DESC
+LIMIT 1;
+
+SELECT brands, SUM(quantity) total_sales
+FROM international_breweries
+WHERE countries = 'Nigeria' AND years = 2019
+GROUP BY brands
+ORDER BY total_sales DESC;
+
+SELECT brands, SUM(quantity) total_quantity
+FROM international_breweries
+WHERE countries = 'Nigeria' AND region = 'southsouth'
+GROUP BY brands
+ORDER BY total_quantity DESC
+LIMIT 1;
+
+SELECT brands, SUM(quantity) total_quantity
+FROM international_breweries
+WHERE countries = 'Nigeria'
+AND brands NOT LIKE ('%malt')
+GROUP BY brands;
+
+SELECT region, SUM(quantity) quantity_per_region
+FROM international_breweries
+WHERE countries = 'Nigeria'
+	AND brands = 'budweiser'
+GROUP BY region
+ORDER BY quantity_per_region DESC;
+
+SELECT region, SUM(quantity) quantity_per_region
+FROM international_breweries1
+WHERE countries = 'Nigeria'
+	AND brands = 'budweiser'
+	AND years = 2019
+GROUP BY region
+ORDER BY quantity_per_region DESC;
+
+-- Section C: Countries Analysis
+
+SELECT countries, SUM (quantity) total_quantity
+FROM international_breweries
+WHERE brands NOT LIKE ('%malt')
+GROUP BY countries
+ORDER BY total_quantity DESC
+LIMIT 1;
+
+
+SELECT sales_rep, SUM(quantity) total
+FROM international_breweries
+WHERE brands = 'budweiser'
+	AND countries = 'Senegal'
+GROUP BY sales_rep
+ORDER BY total DESC
+LIMIT 1;
+
+SELECT countries, SUM(profit) total_profit
+FROM international_breweries
+WHERE months IN ('October', 'November', 'December')
+	AND years = 2019
+GROUP BY countries
+ORDER BY total_profit DESC
+LIMIT 1;
