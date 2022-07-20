@@ -8,12 +8,13 @@ This project is an exploratory analysis of International Breweries Data in West 
 The requirement is to carry out
 - Profit analysis
 - Brand analysis and
-- Country analysis.
+- Countries analysis.
 The goal of this exploratory analysis is to help the company in making better decisions in order to maximize profit and reduce loss to the lowest minimum.
 
 ----
 ## Data Sourcing and Importating into Postgresql
-The dataset was provided by Utiva for the purpose of the project and it is in .csv format.
+The dataset was provided by Utiva for the purpose of the project and it is in .csv format. The dataset can be accessed [here](https://drive.google.com/file/d/11riatqD-uRa98TsCk2xqOBnlr3rzxsS_/view)
+
 Before importing into pgadmin, a table was created in the database with the syntax below:
 ![image](https://user-images.githubusercontent.com/101981141/179999642-886aa394-edd1-4528-ab39-1ea8dea971b3.png)
 
@@ -64,3 +65,11 @@ _The most oil riched country in West Africa is Nigeria_
 ![image](https://user-images.githubusercontent.com/101981141/180009076-082538c4-60b9-4fc0-937e-66d0f3e7aaf6.png)
 #### 9. Level of consumption of Budweiser in the regions in Nigeria in 2019
 ![image](https://user-images.githubusercontent.com/101981141/180009413-8c01edd7-da0d-4bb0-8825-a96b63d88b65.png)
+
+### Section C: Countries Analysis
+#### 1. Country with the highest consumption of beer.
+![image](https://user-images.githubusercontent.com/101981141/180010029-b77e90cd-48d5-473c-9620-4b0d28803a4b.png)
+#### 2. Highest sales personnel of Budweiser in Senegal
+![image](https://user-images.githubusercontent.com/101981141/180010219-32081f08-ef78-47cb-bb75-6106f47d54db.png)
+#### 3. Country with the highest profit of the fourth quarter in 2019
+![image](https://user-images.githubusercontent.com/101981141/180010444-0b523a85-786d-460d-865a-2f6a59817ee6.png)
